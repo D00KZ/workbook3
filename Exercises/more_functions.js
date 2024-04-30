@@ -43,7 +43,13 @@ function displayReceipt(totalDue, amountPaid) {
   console.log("Total Due: " + "$" + totalDue);
   console.log("Amount Paid: " + "$" + amountPaid);
   console.log();
-  console.log("Change Due: " + "$" + ChangeDue);
+
+  if (ChangeDue > 0){
+  console.log("Change Due: " + "$" + ChangeDue);}
+    else if (ChangeDue < 0){
+        console.log("Not enough funds. Customer owes: $" + Math.abs(ChangeDue));
+    }
+
   console.log();
 }
 
@@ -51,5 +57,4 @@ var due = 9.99;
 var paid = 20;
 
 displayReceipt(due, paid);
-
-displayReceipt(100, 150);
+displayReceipt(100, 50);

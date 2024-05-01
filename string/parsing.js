@@ -22,5 +22,5 @@ console.log(middleName);
 console.log(lastName);
 console.log(); //<-- ignore this thx :)
 
-let message = "Your first name is " + firstName + " and your middle name is " + middleName + " and your last name is " + lastName
+let message = `Your first name is ${firstName} and last name is ${lastName}.`
 console.log(message);

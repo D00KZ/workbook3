@@ -1,6 +1,6 @@
 "use strict";
 function add(numberOne, numverTwo) {
-    var results = numberOne + numverTwo
+    const results = numberOne + numverTwo
     console.log(results);    
 }
 

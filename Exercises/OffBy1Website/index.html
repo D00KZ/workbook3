@@ -67,17 +67,59 @@
     </main>
 
     <script>
-        "use strict";
-        function init() {
-            let estimateButton = document.getElementById("estimateButton");
-            estimateButton.onclick = estimate
+      "use strict";
+      function init() {
+        let estimateButton = document.getElementById("estimateButton");
+        estimateButton.onclick = estimate;
+      }
+
+      window.onload = init;
+
+      function estimate() {
+        let numberOfDays = Number(document.getElementById("numberOfDaysInput").value);
+
+        let tollTag = document.getElementById("tollTagCheckbox").checked;
+        let gpsCheckbox = document.getElementById("gpsCheckbox").checked;
+        let roadsideCheckbox = document.getElementById("roadsideCheckbox").checked;
+        let under25Year = document.getElementById("under25Yes").checked;
+
+        let carRentalTotal = document.getElementById("carRentalTotalTD");
+        let optionsTotalTD = document.getElementById("optionsTotalTD");
+        let under25TotalTD = document.getElementById("under25TotalTD");
+        let totalTD = document.getElementById("totalTD");
+
+        const carTotal = 2000;
+        let options = 0;
+        let underAgeSurcharge = 0;
+
+        let carRentalDaysAndPriceTotal = carTotal * numberOfDays;
+        carRentalTotal.innerText = carRentalDaysAndPriceTotal;
+
+        if (tollTag) {
+          options += 3.95;
         }
 
-        window.onload = init;
-
-        function estimate() {
-            console.log(`estimate`);
+        if (gpsCheckbox) {
+          options += 3.95;
         }
+
+        if (roadsideCheckbox) {
+          options += 2.95;
+        }
+
+        let optionsTotal = options * numberOfDays;
+        optionsTotalTD.innerText = optionsTotal;
+
+        if (under25Year) {
+          underAgeSurcharge += carTotal * 0.3;
+        }
+
+        let surchargeTotal = underAgeSurcharge * numberOfDays;
+        under25TotalTD.innerText = surchargeTotal;
+
+        let displayTotal = underAgeSurcharge + options + carTotal;
+        totalTD.innerText = displayTotal;
+      }
     </script>
     <!-- <script
       src="https://dohliam.github.io/dropin-minimal-css/switcher.js"
